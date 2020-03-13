@@ -11,7 +11,6 @@ def roman_numeral_to_decimal():
     # Capitalizes the input
     if not input_string.isupper():
         input_string = input_string.upper()
-        print(input_string)
 
     # Turns input into list
     input_list = list(input_string)
@@ -26,12 +25,83 @@ def roman_numeral_to_decimal():
             input_list.remove(input_list[index + 1])
             input_list.remove(input_list[index + 1])
 
-    print(input_list)
-
     # Looks at each value in the input list, puts the key in the dictionary, and adds the value to the output.
     for c in input_list:
         output = output + roman_numeral_dict.get(c)
-    print(output)
+    print('Result = ' + str(output))
 
 
-roman_numeral_to_decimal()
+def decimal_to_roman_numeral():
+    output = ""
+    input_int = int(input("Input Decimal Number... \n"))
+
+    # Looks at the input which is a int. Divides it by each Roman Numerals respected value. If the Roman Numerals value
+    # can go into the input once or more, it will execute the if statement. The if statement will do a floor division
+    # using the Roman Numeral value. The result will determine how many of the Roman Numeral to add to the output.
+    # It will then modify the input, taking away what was added and then continue down the ifs until done.
+    if input_int / 1000 >= 1:
+        times = input_int // 1000
+        input_int -= 1000 * times
+        output += 'M' * times
+
+    if input_int / 900 >= 1:
+        times = input_int // 900
+        input_int -= 900 * times
+        output += 'CM' * times
+
+    if input_int / 500 >= 1:
+        times = input_int // 500
+        input_int -= 500 * times
+        output += 'D' * times
+
+    if input_int / 400 >= 1:
+        times = input_int // 400
+        input_int -= 400 * times
+        output += 'CD' * times
+
+    if input_int / 100 >= 1:
+        times = input_int // 100
+        input_int -= 100 * times
+        output += 'C' * times
+
+    if input_int / 90 >= 1:
+        times = input_int // 90
+        input_int -= 90 * times
+        output += 'XC' * times
+
+    if input_int / 50 >= 1:
+        times = input_int // 50
+        input_int -= 50 * times
+        output += 'L' * times
+
+    if input_int / 40 >= 1:
+        times = input_int // 40
+        input_int -= 40 * times
+        output += 'XL' * times
+
+    if input_int / 10 >= 1:
+        times = input_int // 10
+        input_int -= 10 * times
+        output += 'X' * times
+
+    if input_int / 9 >= 1:
+        times = input_int // 9
+        input_int -= 9 * times
+        output += 'IX' * times
+
+    if input_int / 5 >= 1:
+        times = input_int // 5
+        input_int -= 5 * times
+        output += 'V' * times
+
+    if input_int / 4 >= 1:
+        times = input_int // 4
+        input_int -= 4 * times
+        output += 'IV' * times
+
+    if input_int / 1 >= 1:
+        times = input_int // 1
+        input_int -= 1 * times
+        output += 'I' * times
+
+    print('Result = ' + output)
