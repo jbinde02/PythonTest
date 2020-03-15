@@ -1,4 +1,4 @@
-def roman_numeral_to_decimal():
+def roman_numeral_to_decimal(input_string):
     # Dictionary that contains the values of each Roman Numeral to 1000
     roman_numeral_dict = {'I': 1, 'IV': 4, 'V': 5,
                           'IX': 9, 'X': 10, 'XL': 40,
@@ -6,7 +6,6 @@ def roman_numeral_to_decimal():
                           'CD': 400, 'D': 500, 'CM': 900,
                           'M': 1000}
     output = 0
-    input_string = str(input("Input Roman Numeral... \n"))
 
     # Capitalizes the input
     if not input_string.isupper():
@@ -28,12 +27,11 @@ def roman_numeral_to_decimal():
     # Looks at each value in the input list, puts the key in the dictionary, and adds the value to the output.
     for c in input_list:
         output = output + roman_numeral_dict.get(c)
-    print('Result = ' + str(output))
+    return output
 
 
-def decimal_to_roman_numeral():
+def decimal_to_roman_numeral(input_int):
     output = ""
-    input_int = int(input("Input Decimal Number... \n"))
 
     # Looks at the input which is a int. Divides it by each Roman Numerals respected value. If the Roman Numerals value
     # can go into the input once or more, it will execute the if statement. The if statement will do a floor division
@@ -104,4 +102,4 @@ def decimal_to_roman_numeral():
         input_int -= 1 * times
         output += 'I' * times
 
-    print('Result = ' + output)
+    return output
